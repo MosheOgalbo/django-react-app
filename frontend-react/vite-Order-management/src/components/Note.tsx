@@ -1,7 +1,17 @@
 import React from "react";
 import "../styles/Note.css";
 
-function Note({ note, onDelete }) {
+interface NoteProps {
+  note: {
+    id: number; // Assuming ID is a number
+    title: string;
+    content: string;
+    created_at: string; // Assuming created_at is a string representing a date
+  };
+  onDelete: (id: number) => void; // Function to handle delete with ID argument
+}
+
+function Note({ note, onDelete }: NoteProps) {
   const formattedDate = new Date(note.created_at).toLocaleDateString("en-US");
 
   return (

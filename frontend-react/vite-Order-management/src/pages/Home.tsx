@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import api from "../api";
-import Note from "../components/Note";
+import api from "../apis/api.js";
+import Note from "../components/Note.tsx";
 import "../styles/Home.css";
+
+interface Note {
+  id: number;
+  title: string;
+  content: string;
+  created_at: string;
+}
 
 function Home() {
   const [notes, setNotes] = useState([]);
-  const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
+  const [content, setContent]: [string, React.Dispatch<string>] = useState("");
+  const [title, setTitle]: [string, React.Dispatch<string>] = useState("");
 
   useEffect(() => {
     getNotes();
@@ -23,7 +30,7 @@ function Home() {
       .catch((err) => alert(err));
   };
 
-  const deleteNote = (id) => {
+  const deleteNote = (id: number) => {
     api
       .delete(`/api/notes/delete/${id}/`)
       .then((res) => {
@@ -34,7 +41,7 @@ function Home() {
       .catch((error) => alert(error));
   };
 
-  const createNote = (e) => {
+  const createNote = (e: any) => {
     e.preventDefault();
     api
       .post("/api/notes/", { content, title })
@@ -50,7 +57,7 @@ function Home() {
     <div>
       <div>
         <h2>Notes</h2>
-        {notes.map((note) => (
+        {notes.map((note: Note) => (
           <Note note={note} onDelete={deleteNote} key={note.id} />
         ))}
       </div>
