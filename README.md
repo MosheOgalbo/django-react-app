@@ -50,14 +50,14 @@ pip install -r requirements.txt
 
 #### Run Database Migrations
 
-```
+```properties
 python manage.py migrate
 
 ```
 
 #### Start Development Server
 
-```
+```properties
 python manage.py runserver
 
 ```
@@ -66,15 +66,15 @@ python manage.py runserver
 
 ###### The API is accessible at the following URL:
 
-```
-http://localhost:8000/
+```sh
+http://localhost:8000
 
 ```
 
 ###### Detailed API documentation can be found at:
 
-```
-http://localhost:8000/docs/
+```sh
+http://localhost:8000/docs
 
 ```
 
